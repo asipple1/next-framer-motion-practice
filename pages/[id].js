@@ -83,7 +83,6 @@ const VehicleDetails = ({ vehicle }) => {
         transition: {
           duration: 0.6,
           ease: easing,
-          delay: 0.1,
         }
       }}
     >
@@ -101,12 +100,6 @@ const VehicleDetails = ({ vehicle }) => {
                 delay: 0.3,
               }
             }}
-            exit={{
-              x: "-100vw",
-              transition: {
-                duration: 0.2,
-              }
-            }}
           >
             <Image
               src={ vehicle.image }
@@ -121,37 +114,17 @@ const VehicleDetails = ({ vehicle }) => {
         <motion.div className={styles.right} variants={stagger}>
           <Link href='/'>
             <motion.div variants={fadeInUp}
-              exit={{
-                y: 60,
-                opacity: 0,
-                transition: { duration: 0.2, ease: easing }
-              }}
             >
               <a className={styles.back}>Back to products</a>
             </motion.div>
           </Link>
           <motion.div className="h5" variants={fadeInUp}
-            exit={{
-            y: 60,
-            opacity: 0,
-            transition: { duration: 0.2, ease: easing }
-            }}
           >{ vehicle.price }</motion.div>
           <motion.div className={`h1 ${styles.headline}`} variants={fadeInUp}
-            exit={{
-              y: 60,
-              opacity: 0,
-              transition: { duration: 0.2, ease: easing }
-            }}
           >
             { vehicle.name }
           </motion.div>
           <motion.p variants={fadeInUp}
-            exit={{
-              y: 60,
-              opacity: 0,
-              transition: { duration: 0.2, ease: easing }
-            }}
           >{ vehicle.details }</motion.p>
         </motion.div>
       </div>
