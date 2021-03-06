@@ -77,15 +77,14 @@ const fadeInUp = {
 
 const VehicleDetails = ({ vehicle }) => {
   return (
-    <motion.div
-      variants={fadeInRight}
-      initial='initial' 
-      animate='animate' 
-      exit={{ 
-        opacity: 0,
-      }}
-    >
-      <div className={styles.grid}>
+      <motion.div className={styles.grid}
+        variants={fadeInRight}
+        initial='initial' 
+        animate='animate' 
+        exit={{ 
+          opacity: 0,
+        }}
+      >
         <div className={styles.left}>
           <motion.div
             initial={{
@@ -131,8 +130,7 @@ const VehicleDetails = ({ vehicle }) => {
           <motion.p variants={fadeInUp}
           >{ vehicle.details }</motion.p>
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
   )
 }
 
