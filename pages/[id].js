@@ -45,10 +45,8 @@ const parentVariant = {
   },
   exit: {
     x: '-100vw',
-    opacity: 0,
     transition: {
       duration: 0.4,
-      when: 'afterChildren',
     }
   }
 }
