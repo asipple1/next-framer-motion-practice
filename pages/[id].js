@@ -80,10 +80,6 @@ const VehicleDetails = ({ vehicle }) => {
       animate='animate' 
       exit={{ 
         opacity: 0,
-        transition: {
-          duration: 0.6,
-          ease: easing,
-        }
       }}
     >
       <div className={styles.grid}>
