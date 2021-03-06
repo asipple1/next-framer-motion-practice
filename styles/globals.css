@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
+  font-size: 18px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -14,3 +17,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+}
+
+h1, .h1 {font-size: 3.074em;} /* 33.1833px | 35.4333px  | 39.8167px    | 44.8px */
+h2, .h2 {font-size: 1.728em;} /*  27.65px   | 29.5167px  | 33.1833px    | 33.1833px*/
+h3, .h3 {font-size: 1.44em;} /* 23.0333px  | 24.6px     | 27.65px*/
+h4, .h4 {font-size: 1.2em} /* 19.2pc     | 20.5px     | 23.0333px*/
+h5, .h5 {font-size: 1.1em} /* 17.6px     | 18.8px     | 21.1167px     |*/
+h6, .h6 {font-size: 1.06em} /* 16.9667px | 18.1167px  | 20.35px     |*/
