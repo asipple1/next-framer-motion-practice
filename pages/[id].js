@@ -29,38 +29,70 @@ export const getStaticProps = async (context) => {
   }
 }
 
-let easing = [0.6, -0.05, 0.01, 0.99];
 
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.07,
-      delay: 0.5
-    }
-  }
-};
-
-const fadeInRight = {
+const parentVariant = {
   initial: {
     x: '-100vw',
     opacity: 0,
-    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 0.6,
-      ease: easing,
+      duration: 0.4,
+      when: 'beforeChildren',
+    }
+  },
+  exit: { 
+    opacity: 0,
+    transition: {
+      when: 'afterChildren',
     }
   }
-};
+}
 
-const fadeInUp = {
+const imageVariant = {
+  initial: {
+    opacity: 0,
+    x: "-100vw"
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.4,
+    }
+  },
+  exit: {
+    opacity: 0,
+    x: "-100vw"
+  }
+}
+
+const textContainerVariant = {
+  initial: {
+    opacity: 0
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+      when: 'beforeChildren',
+    }
+  },
+  exit: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.07,
+      when: 'afterChildren',
+    }
+  }
+}
+
+const textElementVariant = {
   initial: {
     y: 60,
     opacity: 0,
-    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     y: 0,
@@ -70,41 +102,22 @@ const fadeInUp = {
     }
   },
   exit: { 
+    y: 60,
     opacity: 0,
   }
-};
+}
 
 
 const VehicleDetails = ({ vehicle }) => {
   return (
       <motion.div className={styles.grid}
-        layoutId={vehicle.id}
-        variants={fadeInRight}
+        variants={parentVariant}
         initial='initial' 
         animate='animate' 
-        exit={{ 
-          opacity: 0,
-        }}
+        exit='exit'
       >
         <div className={styles.left}>
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: "-100vw"
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              transition: {
-                duration: 0.6,
-                ease: easing,
-                delay: 0.3,
-              }
-            }}
-            exit={{ 
-              opacity: 0,
-            }}
-          >
+          <motion.div variants={imageVariant}>
             <Image
               src={ vehicle.image }
               alt={ vehicle.name }
@@ -115,20 +128,20 @@ const VehicleDetails = ({ vehicle }) => {
           </motion.div>
 
         </div>
-        <motion.div className={styles.right} variants={stagger}>
+        <motion.div className={styles.right} variants={textContainerVariant}>
           <Link href='/'>
-            <motion.div variants={fadeInUp}
+            <motion.div variants={textElementVariant}
             >
               <a className={styles.back}>Back to products</a>
             </motion.div>
           </Link>
-          <motion.div className="h5" variants={fadeInUp}
+          <motion.div className="h5" variants={textElementVariant}
           >{ vehicle.price }</motion.div>
-          <motion.div className={`h1 ${styles.headline}`} variants={fadeInUp}
+          <motion.div className={`h1 ${styles.headline}`} variants={textElementVariant}
           >
             { vehicle.name }
           </motion.div>
-          <motion.p variants={fadeInUp}
+          <motion.p variants={textElementVariant}
           >{ vehicle.details }</motion.p>
         </motion.div>
       </motion.div>
