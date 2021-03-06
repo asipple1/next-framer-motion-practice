@@ -78,6 +78,7 @@ const fadeInUp = {
 const VehicleDetails = ({ vehicle }) => {
   return (
       <motion.div className={styles.grid}
+        layoutId={vehicle.id}
         variants={fadeInRight}
         initial='initial' 
         animate='animate' 
