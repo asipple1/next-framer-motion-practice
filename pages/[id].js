@@ -112,7 +112,7 @@ const VehicleDetails = ({ vehicle }) => {
         initial='initial' 
         animate='animate' 
       >
-        <AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
           <div className={styles.left}>
             <motion.div variants={imageVariant} key={`${vehicle.id}-1`}>
               <Image
