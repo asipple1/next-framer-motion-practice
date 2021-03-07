@@ -17,10 +17,10 @@ const fadeInOut = {
 
 function MyApp({ Component, pageProps, router }) {
   return (
-    <AnimatePresence exitBeforeEnter>
-      <motion.div key={router.route} variants={fadeInOut} initial="initial" animate="animate">
-        <Component {...pageProps} />
-      </motion.div>
+  <AnimatePresence exitBeforeEnter>
+    <motion.div key={router.route} variants={fadeInOut} initial="initial" animate="animate">
+      <Component {...pageProps} />
+    </motion.div>
   </AnimatePresence>
   )
 }

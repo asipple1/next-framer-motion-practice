@@ -29,11 +29,12 @@ export const getStaticProps = async (context) => {
   }
 }
 
-
+let easing = [0.6, -0.05, 0.01, 0.99];
 const parentVariant = {
   initial: {
     x: '-100vw',
     opacity: 0,
+    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     x: 0,
@@ -48,9 +49,6 @@ const parentVariant = {
     x: '-100vw',
     transition: {
       when: 'beforeChildren',
-    },
-    transitionEnd: {
-      display: "none"
     }
   }
 }
@@ -58,7 +56,8 @@ const parentVariant = {
 const imageVariant = {
   initial: {
     opacity: 0,
-    x: "-100vw"
+    x: "-100vw",
+    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     opacity: 1,
@@ -75,7 +74,8 @@ const imageVariant = {
 
 const textContainerVariant = {
   initial: {
-    opacity: 0
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     opacity: 1,
@@ -93,6 +93,7 @@ const textElementVariant = {
   initial: {
     y: 60,
     opacity: 0,
+    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     y: 0,
