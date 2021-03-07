@@ -44,7 +44,7 @@ const parentVariant = {
     }
   },
   exit: {
-    x: '-100vw',
+    opacity: 0,
   }
 }
 
@@ -61,8 +61,8 @@ const imageVariant = {
     }
   },
   exit: {
-    opacity: 0,
-    x: "-100vw"
+    // opacity: 0,
+    // x: "-100vw"
   }
 }
 
@@ -78,7 +78,7 @@ const textContainerVariant = {
     }
   },
   exit: {
-    opacity: 0,
+    // opacity: 0,
   }
 }
 
@@ -95,8 +95,8 @@ const textElementVariant = {
     }
   },
   exit: { 
-    y: 60,
-    opacity: 0,
+    // y: 60,
+    // opacity: 0,
   }
 }
 
@@ -104,6 +104,7 @@ const textElementVariant = {
 const VehicleDetails = ({ vehicle }) => {
   return (
       <motion.div className={styles.grid}
+        layout
         variants={parentVariant}
         initial='initial' 
         animate='animate' 
