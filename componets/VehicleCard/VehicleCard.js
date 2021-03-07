@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../styles/VehicleCards.module.css';
+import styles from '../../styles/VehicleCards.module.css';
 import { motion } from "framer-motion";
 
 let easing = [0.6, -0.05, 0.01, 0.99];

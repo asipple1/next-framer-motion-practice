@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { vehiclesData } from './api/vehiclesData';
 import styles from '../styles/Home.module.css'
-import VehicleCard from '../componets/VehicleCard';
+import VehicleCard from '../componets/VehicleCard/VehicleCard';
 import { motion } from "framer-motion";
 
 const stagger = {

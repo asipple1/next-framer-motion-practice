@@ -2,7 +2,7 @@ import { vehiclesData } from './api/vehiclesData';
 import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/VehicleDetails.module.css'
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 
 // Generate routes for vehicles
@@ -29,12 +29,11 @@ export const getStaticProps = async (context) => {
   }
 }
 
-let easing = [0.6, -0.05, 0.01, 0.99];
+
 const parentVariant = {
   initial: {
     x: '-100vw',
     opacity: 0,
-    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     x: 0,
@@ -45,10 +44,10 @@ const parentVariant = {
     }
   },
   exit: {
-    opacity: 0,
     x: '-100vw',
+    opacity: 0,
     transition: {
-      when: 'beforeChildren',
+      when: 'afterChildren',
     }
   }
 }
@@ -56,8 +55,7 @@ const parentVariant = {
 const imageVariant = {
   initial: {
     opacity: 0,
-    x: "-100vw",
-    transition: { duration: 0.6, ease: easing }
+    x: "-100vw"
   },
   animate: {
     opacity: 1,
@@ -74,8 +72,7 @@ const imageVariant = {
 
 const textContainerVariant = {
   initial: {
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing }
+    opacity: 0
   },
   animate: {
     opacity: 1,
@@ -85,7 +82,11 @@ const textContainerVariant = {
     }
   },
   exit: {
-    opacity: 0,
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.07,
+      when: 'afterChildren',
+    }
   }
 }
 
@@ -93,7 +94,6 @@ const textElementVariant = {
   initial: {
     y: 60,
     opacity: 0,
-    transition: { duration: 0.6, ease: easing }
   },
   animate: {
     y: 0,
@@ -105,6 +105,9 @@ const textElementVariant = {
   exit: { 
     y: 60,
     opacity: 0,
+    transition: {
+      duration: 0.6,
+    }
   }
 }
 
@@ -114,11 +117,11 @@ const VehicleDetails = ({ vehicle }) => {
       <motion.div className={styles.grid}
         variants={parentVariant}
         initial='initial' 
-        animate='animate'
-        exit="exit"
+        animate='animate' 
+        exit='exit'
       >
         <div className={styles.left}>
-          <motion.div variants={imageVariant} key={`${vehicle.id}-1`}>
+          <motion.div variants={imageVariant}>
             <Image
               src={ vehicle.image }
               alt={ vehicle.name }
@@ -129,17 +132,21 @@ const VehicleDetails = ({ vehicle }) => {
           </motion.div>
 
         </div>
-        <motion.div className={styles.right} variants={textContainerVariant} key={`${vehicle.id}-2`}>
+        <motion.div className={styles.right} variants={textContainerVariant}>
           <Link href='/'>
-            <motion.div variants={textElementVariant} key={`${vehicle.id}-3`}>
-              <a className={styles.back}>Back to products</a>
+            <motion.div variants={textElementVariant}
+            >
+              <a className={styles.back}>Back to vehicles</a>
             </motion.div>
           </Link>
-          <motion.div className="h5" variants={textElementVariant} key={`${vehicle.id}-4`}>{ vehicle.price }</motion.div>
-          <motion.div className={`h1 ${styles.headline}`} variants={textElementVariant} key={`${vehicle.id}-5`}>
+          <motion.div className="h5" variants={textElementVariant}
+          >{ vehicle.price }</motion.div>
+          <motion.div className={`h1 ${styles.headline}`} variants={textElementVariant}
+          >
             { vehicle.name }
           </motion.div>
-          <motion.p variants={textElementVariant} key={`${vehicle.id}-6`}>{ vehicle.details }</motion.p>
+          <motion.p variants={textElementVariant}
+          >{ vehicle.details }</motion.p>
         </motion.div>
       </motion.div>
   )

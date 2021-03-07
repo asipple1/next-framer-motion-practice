@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { AnimatePresence, motion } from "framer-motion";
+import { useTransitionFix } from "../componets/utils/useTransitionFix"
 
 
 const fadeInOut = {
@@ -16,12 +17,11 @@ const fadeInOut = {
 
 
 function MyApp({ Component, pageProps, router }) {
+  const transitionCallback = useTransitionFix()
   return (
-  <AnimatePresence exitBeforeEnter>
-    <motion.div key={router.route} variants={fadeInOut} initial="initial" animate="animate">
-      <Component {...pageProps} />
-    </motion.div>
-  </AnimatePresence>
+    <AnimatePresence exitBeforeEnter onExitComplete={transitionCallback}>
+      <Component {...pageProps} key={router.route} />
+    </AnimatePresence>
   )
 }
 
