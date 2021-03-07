@@ -46,9 +46,8 @@ const parentVariant = {
   exit: {
     opacity: 0,
     x: '-100vw',
-    
     transition: {
-      when: 'beforeChildren',
+      when: 'afterChildren',
     }
   }
 }
@@ -65,7 +64,10 @@ const imageVariant = {
       duration: 0.4,
     }
   },
-  exit: false
+  exit: {
+    opacity: 0,
+    x: "-100vw"
+  }
 }
 
 const textContainerVariant = {
@@ -79,7 +81,9 @@ const textContainerVariant = {
       when: 'beforeChildren',
     }
   },
-  exit: false
+  exit: {
+    opacity: 0,
+  }
 }
 
 const textElementVariant = {
@@ -94,7 +98,10 @@ const textElementVariant = {
       duration: 0.6,
     }
   },
-  exit: false
+  exit: { 
+    y: 60,
+    opacity: 0,
+  }
 }
 
 
@@ -104,7 +111,6 @@ const VehicleDetails = ({ vehicle }) => {
         variants={parentVariant}
         initial='initial' 
         animate='animate' 
-        exit='exit'
       >
         <AnimatePresence>
           <div className={styles.left}>
