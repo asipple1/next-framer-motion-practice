@@ -103,38 +103,41 @@ const textElementVariant = {
 
 const VehicleDetails = ({ vehicle }) => {
   return (
-      <motion.div className={styles.grid}
-        layout
+      <motion.div
+                layout
         variants={parentVariant}
         initial='initial' 
         animate='animate' 
         exit='exit'
       >
         <AnimatePresence exitBeforeEnter>
-          <div className={styles.left}>
-            <motion.div variants={imageVariant} key={`${vehicle.id}-1`}>
-              <Image
-                src={ vehicle.image }
-                alt={ vehicle.name }
-                layout="responsive"
-                width={700}
-                height={280}
-              />
-            </motion.div>
+          <div className={styles.grid}>
 
-          </div>
-          <motion.div className={styles.right} variants={textContainerVariant} key={`${vehicle.id}-2`}>
-            <Link href='/'>
-              <motion.div variants={textElementVariant} key={`${vehicle.id}-3`}>
-                <a className={styles.back}>Back to products</a>
+              <div className={styles.left}>
+                <motion.div variants={imageVariant} key={`${vehicle.id}-1`}>
+                  <Image
+                    src={ vehicle.image }
+                    alt={ vehicle.name }
+                    layout="responsive"
+                    width={700}
+                    height={280}
+                  />
+                </motion.div>
+
+              </div>
+              <motion.div className={styles.right} variants={textContainerVariant} key={`${vehicle.id}-2`}>
+                <Link href='/'>
+                  <motion.div variants={textElementVariant} key={`${vehicle.id}-3`}>
+                    <a className={styles.back}>Back to products</a>
+                  </motion.div>
+                </Link>
+                <motion.div className="h5" variants={textElementVariant} key={`${vehicle.id}-4`}>{ vehicle.price }</motion.div>
+                <motion.div className={`h1 ${styles.headline}`} variants={textElementVariant} key={`${vehicle.id}-5`}>
+                  { vehicle.name }
+                </motion.div>
+                <motion.p variants={textElementVariant} key={`${vehicle.id}-6`}>{ vehicle.details }</motion.p>
               </motion.div>
-            </Link>
-            <motion.div className="h5" variants={textElementVariant} key={`${vehicle.id}-4`}>{ vehicle.price }</motion.div>
-            <motion.div className={`h1 ${styles.headline}`} variants={textElementVariant} key={`${vehicle.id}-5`}>
-              { vehicle.name }
-            </motion.div>
-            <motion.p variants={textElementVariant} key={`${vehicle.id}-6`}>{ vehicle.details }</motion.p>
-          </motion.div>
+          </div>
         </AnimatePresence>
       </motion.div>
   )
