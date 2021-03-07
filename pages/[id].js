@@ -47,7 +47,10 @@ const parentVariant = {
     opacity: 0,
     x: '-100vw',
     transition: {
-      when: 'afterChildren',
+      when: 'beforeChildren',
+    },
+    transitionEnd: {
+      display: "none"
     }
   }
 }
@@ -110,7 +113,8 @@ const VehicleDetails = ({ vehicle }) => {
       <motion.div className={styles.grid}
         variants={parentVariant}
         initial='initial' 
-        animate='animate' 
+        animate='animate'
+        exit="exit"
       >
         <AnimatePresence exitBeforeEnter>
           <div className={styles.left}>
