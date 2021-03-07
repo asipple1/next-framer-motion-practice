@@ -44,9 +44,12 @@ const parentVariant = {
     }
   },
   exit: {
-    when: 'afterChildren',
     opacity: 0,
     x: '-100vw',
+    
+    transition: {
+      when: 'beforeChildren',
+    }
   }
 }
 
@@ -62,10 +65,7 @@ const imageVariant = {
       duration: 0.4,
     }
   },
-  exit: {
-    opacity: 0,
-    x: "-100vw"
-  }
+  exit: false
 }
 
 const textContainerVariant = {
@@ -79,9 +79,7 @@ const textContainerVariant = {
       when: 'beforeChildren',
     }
   },
-  exit: {
-    opacity: 0,
-  }
+  exit: false
 }
 
 const textElementVariant = {
@@ -96,19 +94,19 @@ const textElementVariant = {
       duration: 0.6,
     }
   },
-  exit: { 
-    y: 60,
-    opacity: 0,
-  }
+  exit: false
 }
 
 
 const VehicleDetails = ({ vehicle }) => {
   return (
       <motion.div className={styles.grid}
-        initial='initial' animate='animate' exit={{ opacity: 0 }}
+        variants={parentVariant}
+        initial='initial' 
+        animate='animate' 
+        exit='exit'
       >
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
           <div className={styles.left}>
             <motion.div variants={imageVariant} key={`${vehicle.id}-1`}>
               <Image
