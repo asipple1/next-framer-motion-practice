@@ -1,4 +1,5 @@
 // utils/useTransitionFix.ts
+// https://github.com/vercel/next.js/issues/17464
 import Router from 'next/router';
 import { useCallback, useEffect, useRef } from 'react';
 export const useTransitionFix = () => {

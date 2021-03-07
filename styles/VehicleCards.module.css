@@ -4,8 +4,15 @@
   border-radius: 2px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  overflow: hidden;
 }
 
 .card:hover {
   cursor: pointer;
+}
+
+.cardcontainer {
+  display: grid;
+  grid-template-columns: 100% 100%;
+  grid-auto-rows: auto;
 }

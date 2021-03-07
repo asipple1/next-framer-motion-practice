@@ -41,7 +41,8 @@ export default function Home({vehicles}) {
             id={vehicle.id}
             key={vehicle.id}
             name={vehicle.name} 
-            image={vehicle.image} 
+            image={vehicle.image}
+            image_two={vehicle.image_two} 
             price={vehicle.price}
           />
         )

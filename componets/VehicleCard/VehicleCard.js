@@ -24,7 +24,7 @@ const fadeInUp = {
 const imageMove = {
   initial: {
     opacity: 0,
-    x: -100
+    x: 100
   },
   animate: {
     opacity: 1,
@@ -33,13 +33,13 @@ const imageMove = {
 }
 
 
-const VehicleCard = ({id, name, price, image, animationVariants}) => {
+const VehicleCard = ({id, name, price, image, image_two}) => {
   return (
     <Link href={`/${id}`}>
       <motion.a className={`${styles.card}`}
         variants={fadeInUp}
-        whileHover={{ scale: 1.05, boxShadow: "0 5px 13px 3px rgba(0,0,0,0.3)" }}
-        whileTap={{ scale: 0.95, boxShadow: "0 5px 13px 3px rgba(0,0,0,0.3)" }}
+        whileHover={{ scale: 1.05, boxShadow: "0 2px 13px 2px rgba(0,0,0,0.1)" }}
+        whileTap={{ scale: 0.92, boxShadow: "0 2px 13px 2px rgba(0,0,0,0.1)" }}
       >
         <div className={styles.card}>
           <div className="h2 card__name">{name}</div>
@@ -48,14 +48,24 @@ const VehicleCard = ({id, name, price, image, animationVariants}) => {
         <motion.div
           variants={imageMove}
         >
-          <Image
-            className="card__image"
-            src={ image }
-            alt={ name }
-            layout="responsive"
-            width={550}
-            height={220}
-          />
+          <motion.div className={styles.cardcontainer} whileHover={{ x: '-100%', transition: { duration: 0.5 }}} whileTap={{ x: '-100%', transition: { duration: 0.5 }}}>
+            <Image
+              className="card__image"
+              src={ image }
+              alt={ name }
+              layout="responsive"
+              width={550}
+              height={220}
+            />
+            <Image
+              className="card__image"
+              src={ image_two }
+              alt={ name }
+              layout="responsive"
+              width={550}
+              height={220}
+            />
+          </motion.div>
         </motion.div>
       </motion.a>
     </Link>
