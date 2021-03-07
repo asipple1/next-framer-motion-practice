@@ -13,6 +13,9 @@ const stagger = {
     transition: {
       staggerChildren: 0.1
     }
+  },
+  exit: {
+    opacity: 0,
   }
 };
 
@@ -31,6 +34,7 @@ export default function Home({vehicles}) {
         variants={stagger}
         initial="initial"
         animate="animate"
+        exit="exit"
       >
         {vehicles.map(vehicle => (
           <VehicleCard 

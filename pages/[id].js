@@ -44,7 +44,9 @@ const parentVariant = {
     }
   },
   exit: {
+    when: 'afterChildren',
     opacity: 0,
+    x: '-100vw',
   }
 }
 
@@ -61,8 +63,8 @@ const imageVariant = {
     }
   },
   exit: {
-    // opacity: 0,
-    // x: "-100vw"
+    opacity: 0,
+    x: "-100vw"
   }
 }
 
@@ -78,7 +80,7 @@ const textContainerVariant = {
     }
   },
   exit: {
-    // opacity: 0,
+    opacity: 0,
   }
 }
 
@@ -95,49 +97,42 @@ const textElementVariant = {
     }
   },
   exit: { 
-    // y: 60,
-    // opacity: 0,
+    y: 60,
+    opacity: 0,
   }
 }
 
 
 const VehicleDetails = ({ vehicle }) => {
   return (
-      <motion.div
-                layout
-        variants={parentVariant}
-        initial='initial' 
-        animate='animate' 
-        exit='exit'
+      <motion.div className={styles.grid}
+        initial='initial' animate='animate' exit={{ opacity: 0 }}
       >
         <AnimatePresence exitBeforeEnter>
-          <div className={styles.grid}>
+          <div className={styles.left}>
+            <motion.div variants={imageVariant} key={`${vehicle.id}-1`}>
+              <Image
+                src={ vehicle.image }
+                alt={ vehicle.name }
+                layout="responsive"
+                width={700}
+                height={280}
+              />
+            </motion.div>
 
-              <div className={styles.left}>
-                <motion.div variants={imageVariant} key={`${vehicle.id}-1`}>
-                  <Image
-                    src={ vehicle.image }
-                    alt={ vehicle.name }
-                    layout="responsive"
-                    width={700}
-                    height={280}
-                  />
-                </motion.div>
-
-              </div>
-              <motion.div className={styles.right} variants={textContainerVariant} key={`${vehicle.id}-2`}>
-                <Link href='/'>
-                  <motion.div variants={textElementVariant} key={`${vehicle.id}-3`}>
-                    <a className={styles.back}>Back to products</a>
-                  </motion.div>
-                </Link>
-                <motion.div className="h5" variants={textElementVariant} key={`${vehicle.id}-4`}>{ vehicle.price }</motion.div>
-                <motion.div className={`h1 ${styles.headline}`} variants={textElementVariant} key={`${vehicle.id}-5`}>
-                  { vehicle.name }
-                </motion.div>
-                <motion.p variants={textElementVariant} key={`${vehicle.id}-6`}>{ vehicle.details }</motion.p>
-              </motion.div>
           </div>
+          <motion.div className={styles.right} variants={textContainerVariant} key={`${vehicle.id}-2`}>
+            <Link href='/'>
+              <motion.div variants={textElementVariant} key={`${vehicle.id}-3`}>
+                <a className={styles.back}>Back to products</a>
+              </motion.div>
+            </Link>
+            <motion.div className="h5" variants={textElementVariant} key={`${vehicle.id}-4`}>{ vehicle.price }</motion.div>
+            <motion.div className={`h1 ${styles.headline}`} variants={textElementVariant} key={`${vehicle.id}-5`}>
+              { vehicle.name }
+            </motion.div>
+            <motion.p variants={textElementVariant} key={`${vehicle.id}-6`}>{ vehicle.details }</motion.p>
+          </motion.div>
         </AnimatePresence>
       </motion.div>
   )
