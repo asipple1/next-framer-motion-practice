@@ -47,6 +47,7 @@ const parentVariant = {
     x: '-100vw',
     opacity: 0,
     transition: {
+      duration: 0.3,
       when: 'afterChildren',
     }
   }
@@ -66,7 +67,10 @@ const imageVariant = {
   },
   exit: {
     opacity: 0,
-    x: "-100vw"
+    x: "-100vw",
+    transition: {
+      duration: 0.3,
+    }
   }
 }
 
@@ -82,11 +86,7 @@ const textContainerVariant = {
     }
   },
   exit: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.07,
-      when: 'afterChildren',
-    }
+    opacity: 0,
   }
 }
 
